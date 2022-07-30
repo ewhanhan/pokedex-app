@@ -1,13 +1,13 @@
-import { useParams } from "react-router-dom";
-import { Layout } from "../layout/layout";
-import { IPokemon } from "../types/pokemon";
+import {useParams} from 'react-router-dom';
+import {Layout} from '../../components/index';
+import {IPokemon} from '../../types/index';
 
 interface IPokemonProfileProps {
   pokemonDetails?: IPokemon;
 }
 
-export function PokemonProfile(props: IPokemonProfileProps) {
-  const { id } = useParams();
+export function PokemonProfile({pokemonDetails}: IPokemonProfileProps) {
+  const {id} = useParams();
   console.log(id);
   return (
     <Layout>
@@ -24,7 +24,7 @@ export function PokemonProfile(props: IPokemonProfileProps) {
             />
           </div>
 
-          <div className="border border-black"></div>
+          <div className="border border-black">{pokemonDetails?.height}</div>
         </div>
       </div>
     </Layout>

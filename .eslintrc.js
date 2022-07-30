@@ -1,83 +1,74 @@
 module.exports = {
-  root: true,
-  env: { node: true },
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "react", "prettier"],
+  env: {
+    browser: true,
+    es2021: true,
+  },
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['react', '@typescript-eslint', 'react-hooks'],
   rules: {
-    // Usages of `{}` and `object` look fine in this repo
-    "@typescript-eslint/ban-types": [
-      "error",
+    // suppress errors for missing 'import React' in files
+    'react/react-in-jsx-scope': 'off',
+
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error'],
+
+    'react/jsx-filename-extension': ['warn', {extensions: ['.tsx']}],
+
+    'import/extensions': [
+      'error',
+      'ignorePackages',
       {
-        extendDefaults: true,
-        types: {
-          "{}": false,
-          object: false,
-        },
+        ts: 'never',
+        tsx: 'never',
       },
     ],
 
-    // Already handled by typescript
-    "@typescript-eslint/no-unused-vars": "off",
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
 
-    // I don't like it
-    "@typescript-eslint/explicit-module-boundary-types": "off",
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
 
-    // Interface/type delimiter styles, prefer comma
-    "@typescript-eslint/member-delimiter-style": [
-      "warn",
+    'import/prefer-default-export': 'off',
+
+    'react/prop-types': 'off',
+    'react/require-default-props': 'off',
+
+    // note you must disable the base rule as it can report incorrect errors
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
+
+    'react/self-closing-comp': [
+      'error',
       {
-        multiline: {
-          delimiter: "semi",
-          requireLast: true,
-        },
-        singleline: {
-          delimiter: "semi",
-          requireLast: false,
-        },
-        multilineDetection: "brackets",
+        component: false,
+        html: true,
       },
     ],
 
-    // Semicolon
-    semi: "off",
-    "@typescript-eslint/semi": ["error"],
-
-    // Trailing comma
-    "comma-dangle": "off",
-    "@typescript-eslint/comma-dangle": [
-      "error",
+    'prettier/prettier': [
+      'error',
       {
-        arrays: "always-multiline",
-        objects: "always-multiline",
-        imports: "always-multiline",
-        exports: "always-multiline",
-        functions: "always-multiline",
-        enums: "always-multiline",
-        generics: "always-multiline",
-        tuples: "always-multiline",
+        endOfLine: 'auto',
       },
     ],
-
-    // Quotes
-    quotes: "off",
-    "@typescript-eslint/quotes": ["error"],
-
-    // Spacing around type annotations
-    "@typescript-eslint/type-annotation-spacing": ["error"],
-
-    // Curly spacing
-    "object-curly-spacing": "off",
-    "@typescript-eslint/object-curly-spacing": ["error", "always"],
-
-    // Spacing in template curlies
-    // 'template-curly-spacing': ['error', 'always'],
-
-    //React
-    "react/jsx-tag-spacing": ["error", { beforeSelfClosing: "always" }],
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
   },
 };

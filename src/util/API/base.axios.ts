@@ -1,7 +1,7 @@
-import Axios from "axios";
+import Axios from 'axios';
 
 const axiosInstance = Axios.create({
-  baseURL: "https://pokeapi.co/api/v2",
+  baseURL: 'https://pokeapi.co/api/v2',
 });
 
 export default axiosInstance;

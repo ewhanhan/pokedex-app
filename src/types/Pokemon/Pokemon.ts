@@ -3,6 +3,13 @@ export interface IPokemonNamedAPIResource {
   url: string;
 }
 
+export interface IPokemonPage {
+  count: number;
+  next: string;
+  previous: string;
+  results: IPokemonNamedAPIResource[];
+}
+
 export interface IPokemon {
   abilities: IAbility[];
   base_experience: number;
@@ -19,10 +26,10 @@ export interface ISprites {
 }
 
 export interface IOfficialArtwork {
-  "official-artwork": IOfficialArtwork;
+  'official-artwork': IFrontDefault;
 }
 
-export interface IOfficialArtwork {
+export interface IFrontDefault {
   front_default: string;
 }
 

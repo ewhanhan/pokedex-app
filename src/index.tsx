@@ -1,17 +1,16 @@
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./pages/app";
-import { PokemonProfile } from "./pages/pokemonProfile";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ReactDOM from 'react-dom/client';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import './index.css';
+import {Landing, PokemonProfile} from './pages/index';
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement,
+  document.getElementById('root') as HTMLElement
 );
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route index element={<App />}></Route>
+      <Route index element={<Landing />}></Route>
       <Route path=":id" element={<PokemonProfile />} />
     </Routes>
-  </BrowserRouter>,
+  </BrowserRouter>
 );
