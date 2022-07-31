@@ -42,7 +42,7 @@ export function PokemonSearchBar() {
             type="text"
             id="searchPokemonInput"
             placeholder="search for pokemon..."
-            className="w-9/12 font-bold tracking-wide focus:outline-none"
+            className="focus:shadow-outline form-input w-full appearance-none rounded-lg border-0 bg-transparent font-bold tracking-wide outline-none focus:outline-none"
             value={input}
             onChange={onChangeHandler}
           />
