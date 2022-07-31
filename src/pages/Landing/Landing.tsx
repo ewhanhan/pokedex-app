@@ -1,5 +1,10 @@
 import {useEffect, useState} from 'react';
-import {PokemonCard, Layout, PageNavigation} from '../../components/index';
+import {
+  PokemonCard,
+  Layout,
+  PageNavigation,
+  PokemonSearchBar,
+} from '../../components/index';
 import {getPokemonByPage} from '../../util/API/apiRequest';
 import {IPokemonNamedAPIResource} from '../../types/index';
 
@@ -27,6 +32,7 @@ export function Landing(): JSX.Element {
       {isLoading && <div>loading...</div>}
       {!isLoading && pokemonList && (
         <div className="relative mx-auto grid grid-cols-1 justify-center gap-4 md:container md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <PokemonSearchBar />
           {pokemonList.map((pokemon) => {
             return (
               <PokemonCard

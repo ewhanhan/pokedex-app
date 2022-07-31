@@ -48,3 +48,7 @@ export async function getPokemonByPage(
 ): Promise<IPokemonPage> {
   return apiRequest('pokemon', HTTP_METHODS.GET, {limit, offset});
 }
+
+export async function getPokemonByNameOrId(val: number | string) {
+  return apiRequest(`pokemon/${val}`, HTTP_METHODS.GET);
+}
