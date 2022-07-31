@@ -1,20 +1,14 @@
 import {Link} from 'react-router-dom';
-import {useEffect, useState, Dispatch, SetStateAction} from 'react';
+import {useEffect, useState} from 'react';
 import axiosInstance from '../../util/API/base.axios';
 import {IPokemonNamedAPIResource, IPokemon} from '../../types/index';
 import {PokemonType} from '../PokemonTypes/PokemonTypes';
 
 interface IPokemonCardProps {
   pokemon: IPokemonNamedAPIResource;
-  isLoading: boolean;
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-export function PokemonCard({
-  pokemon,
-  isLoading,
-  setIsLoading,
-}: IPokemonCardProps): JSX.Element | null {
+export function PokemonCard({pokemon}: IPokemonCardProps): JSX.Element | null {
   const [pokemonDetails, setPokemonDetails] = useState<IPokemon>();
 
   useEffect(() => {
@@ -22,7 +16,6 @@ export function PokemonCard({
       try {
         const response = await axiosInstance.get(pokemon.url);
         setPokemonDetails(response.data as IPokemon);
-        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -32,7 +25,7 @@ export function PokemonCard({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pokemon.url]);
 
-  return !isLoading ? (
+  return (
     <Link to={pokemonDetails?.id.toString() ?? ''}>
       <div className="flex h-min max-w-md flex-col justify-center justify-self-center rounded-lg border border-gray-200 bg-white shadow-md transition duration-500 ease-in-out hover:scale-105 hover:cursor-pointer">
         <img
@@ -55,5 +48,5 @@ export function PokemonCard({
         </div>
       </div>
     </Link>
-  ) : null;
+  );
 }

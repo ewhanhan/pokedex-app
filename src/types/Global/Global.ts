@@ -5,3 +5,8 @@ export enum HTTP_METHODS {
   DELETE = 'DELETE',
   PATCH = 'PATCH',
 }
+
+export enum LOADER {
+  GRID,
+  SCALE,
+}

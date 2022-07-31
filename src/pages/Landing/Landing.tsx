@@ -4,9 +4,10 @@ import {
   Layout,
   PageNavigation,
   PokemonSearchBar,
+  Loading,
 } from '../../components/index';
 import {getPokemonByPage} from '../../util/API/apiRequest';
-import {IPokemonNamedAPIResource} from '../../types/index';
+import {IPokemonNamedAPIResource, LOADER} from '../../types/index';
 
 export function Landing(): JSX.Element {
   const [pokemonList, setPokemonList] = useState<IPokemonNamedAPIResource[]>();
@@ -29,19 +30,17 @@ export function Landing(): JSX.Element {
 
   return (
     <Layout>
-      {isLoading && <div>loading...</div>}
+      <Loading
+        type={LOADER.GRID}
+        size={50}
+        loading={isLoading}
+        speedMultiplier={0.85}
+      />
       {!isLoading && pokemonList && (
         <div className="relative mx-auto grid grid-cols-1 justify-center gap-4 md:container md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <PokemonSearchBar />
           {pokemonList.map((pokemon) => {
-            return (
-              <PokemonCard
-                key={pokemon.name}
-                pokemon={pokemon}
-                isLoading={isLoading}
-                setIsLoading={setIsLoading}
-              />
-            );
+            return <PokemonCard key={pokemon.name} pokemon={pokemon} />;
           })}
           <PageNavigation offSet={pageOffset} setPageOffset={setPageOffset} />
         </div>
