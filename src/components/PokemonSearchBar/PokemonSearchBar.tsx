@@ -2,7 +2,7 @@
 import {useState, useRef, useEffect} from 'react';
 import {debounce} from 'lodash';
 import {MagnifyingGlass} from 'phosphor-react';
-import {getPokemonByNameOrId} from '../../util/API/apiRequest';
+import {getPokemonByNameOrId} from '../../util/index';
 
 // https://www.carlrippon.com/using-lodash-debounce-with-react-and-ts/
 

@@ -6,7 +6,7 @@ import {
   PokemonSearchBar,
   Loading,
 } from '../../components/index';
-import {getPokemonByPage} from '../../util/API/apiRequest';
+import {getPokemonByPage} from '../../util/index';
 import {IPokemonNamedAPIResource, LOADER} from '../../types/index';
 
 export function Landing(): JSX.Element {

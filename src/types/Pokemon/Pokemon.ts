@@ -19,8 +19,13 @@ export interface IPokemon {
   weight: number;
   types: IType[];
   sprites: ISprites;
+  stats: IStats[];
 }
 
+export interface IStats {
+  base_stat: number;
+  stat: IPokemonNamedAPIResource;
+}
 export interface ISprites {
   other: IOfficialArtwork;
 }
