@@ -1,4 +1,4 @@
-interface PageNavigationProps {
+interface IPageNavigationProps {
   setPageOffset: React.Dispatch<React.SetStateAction<number>>;
   offSet: number;
 }
@@ -8,7 +8,7 @@ enum PageNavigationType {
   Next,
 }
 
-interface PageNavigationButtonProps {
+interface IPageNavigationButtonProps {
   text: string;
   type: PageNavigationType;
   setPageOffset: React.Dispatch<React.SetStateAction<number>>;
@@ -18,7 +18,7 @@ function PageNavigationButton({
   text,
   setPageOffset,
   type,
-}: PageNavigationButtonProps) {
+}: IPageNavigationButtonProps) {
   const buttonHandler = () => {
     setPageOffset((prev) => {
       if (type === PageNavigationType.Next) {
@@ -38,7 +38,7 @@ function PageNavigationButton({
   );
 }
 
-export function PageNavigation({setPageOffset, offSet}: PageNavigationProps) {
+export function PageNavigation({setPageOffset, offSet}: IPageNavigationProps) {
   const buttonClass = [
     'mt-2 mb-4 flex w-full justify-center md:col-span-2 lg:col-span-3 xl:col-span-4',
   ];

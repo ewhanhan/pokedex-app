@@ -20,8 +20,23 @@ export interface IPokemon {
   types: IType[];
   sprites: ISprites;
   stats: IStats[];
+  species: IPokemonNamedAPIResource;
 }
 
+export interface IPokemonSpecies {
+  flavor_text_entries: IFlavorTextEntries[];
+  capture_rate: number;
+  gender_rate: number;
+  shape: IPokemonNamedAPIResource;
+  habitat: IPokemonNamedAPIResource;
+  growth_rate: IPokemonNamedAPIResource;
+  egg_groups: IPokemonNamedAPIResource[];
+}
+
+export interface IFlavorTextEntries {
+  language: IPokemonNamedAPIResource;
+  flavor_text: string;
+}
 export interface IStats {
   base_stat: number;
   stat: IPokemonNamedAPIResource;

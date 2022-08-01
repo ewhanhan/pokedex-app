@@ -4,3 +4,6 @@ export * from './Layout/Layout';
 export * from './PageNavigation/PageNavigation';
 export * from './PokemonSearchBar/PokemonSearchBar';
 export * from './Loading/Loading';
+export * from './PokemonProfile/index';
+export * from './PokemonAbilities/PokemonAbilities';
+export * from './PokemonHeader/PokemonHeader';

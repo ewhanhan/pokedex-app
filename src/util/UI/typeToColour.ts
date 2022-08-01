@@ -3,41 +3,41 @@
 export function getColourFromType(name: string): string {
   switch (name) {
     case 'bug':
-      return 'bg-green-700';
+      return 'bg-green-700 text-white';
     case 'dark':
-      return 'bg-zinc-600';
+      return 'bg-zinc-600 text-white';
     case 'dragon':
       return 'bg-gradient-to-r from-sky-500 to-orange-500';
     case 'electric':
-      return 'bg-yellow-300';
+      return 'bg-yellow-300 text-black';
     case 'fairy':
-      return 'bg-pink-300';
+      return 'bg-pink-300 text-black';
     case 'fighting':
-      return 'bg-yellow-700';
+      return 'bg-yellow-700 text-white';
     case 'fire':
-      return 'bg-red-600';
+      return 'bg-red-600 text-white';
     case 'flying':
-      return 'bg-gradient-to-r from-cyan-500 to-blue-500';
+      return 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white';
     case 'ghost':
-      return 'bg-violet-700';
+      return 'bg-violet-700 text-white';
     case 'grass':
-      return 'bg-green-600';
+      return 'bg-green-600 text-white';
     case 'ground':
-      return 'bg-yellow-600';
+      return 'bg-yellow-600 text-white';
     case 'ice':
-      return 'bg-cyan-500';
+      return 'bg-cyan-500 text-black';
     case 'normal':
-      return 'bg-gray-400';
+      return 'bg-gray-400 text-black';
     case 'poison':
-      return 'bg-purple-600';
+      return 'bg-purple-600 text-white';
     case 'psychic':
-      return 'bg-pink-500';
+      return 'bg-pink-500 text-white';
     case 'rock':
-      return 'bg-yellow-900';
+      return 'bg-yellow-900 text-white';
     case 'steel':
-      return 'bg-gray-600';
+      return 'bg-gray-600 text-white';
     case 'water':
-      return 'bg-blue-600';
+      return 'bg-blue-600 text-white';
     default:
       return '';
   }

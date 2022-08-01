@@ -65,6 +65,8 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+
+    'prefer-template': 'off',
   },
   settings: {
     'import/resolver': {
