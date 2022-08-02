@@ -1,4 +1,3 @@
-import cs from 'clsx';
 import {IAbility} from '../../types/index';
 import {useComponentId} from '../../util/index';
 import {PokemonHeader} from '../index';
@@ -9,15 +8,10 @@ interface IPokemonAbilitiesProps {
 export function PokemonAbilities({abilities}: IPokemonAbilitiesProps) {
   const componentId = useComponentId();
 
-  const parentClassNames = cs('grid max-h-8 w-ful gap-2 mb-4', {
-    'grid-cols-1': abilities.length === 1,
-    'grid-cols-2': abilities.length === 2,
-  });
-
   return (
     <>
       <PokemonHeader title="Abilities" />
-      <div className={parentClassNames}>
+      <div className="w-ful mb-4 grid max-h-8 gap-2">
         {abilities.map((ability: IAbility) => {
           return (
             <span
