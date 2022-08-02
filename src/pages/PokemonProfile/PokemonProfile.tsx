@@ -11,12 +11,13 @@ import {
   PokemonStats,
   PokemonSection,
   PokemonAbilities,
+  PokemonBiography,
 } from '../../components/index';
 import {containerVariant} from '../../style/index';
 
 export function PokemonProfile(): JSX.Element | null {
   const {id} = useParams();
-  const [, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [, setError] = useState<unknown>(undefined);
   const [pokemonDetails, setPokemonDetails] = useState<IPokemon>();
   const [colour, setColour] = useState('');
@@ -40,7 +41,12 @@ export function PokemonProfile(): JSX.Element | null {
     })();
   }, [id]);
 
-  if (pokemonDetails === undefined || speciesDetails === undefined) return null;
+  if (
+    pokemonDetails === undefined ||
+    speciesDetails === undefined ||
+    isLoading !== false
+  )
+    return null;
   console.log(pokemonDetails);
   console.log(speciesDetails);
   return (
@@ -69,14 +75,19 @@ export function PokemonProfile(): JSX.Element | null {
                   borderRadius: ['20%', '20%', '50%', '50%', '20%'],
                 }}
                 className="flex justify-center">
-                <img
-                  className="overflow-hidden object-cover object-center"
-                  src={
-                    pokemonDetails.sprites.other['official-artwork']
-                      .front_default
-                  }
-                  alt={pokemonDetails.name}
-                />
+                {!isLoading && (
+                  <img
+                    className="overflow-hidden object-cover object-center"
+                    src={
+                      pokemonDetails.sprites.other['official-artwork']
+                        .front_default
+                    }
+                    alt={pokemonDetails.name}
+                    onLoad={() => {
+                      setIsLoading(false);
+                    }}
+                  />
+                )}
               </motion.div>
               <div>
                 <PokemonType header types={pokemonDetails.types} />
@@ -84,9 +95,10 @@ export function PokemonProfile(): JSX.Element | null {
                 <PokemonAbilities abilities={pokemonDetails.abilities} />
               </div>
             </div>
-            <PokemonSection sectionTitle="Legend" colour={colour}>
-              <p>{speciesDetails.flavor_text_entries[0].flavor_text}</p>
-            </PokemonSection>
+            <PokemonBiography
+              colour={colour}
+              flavor_text_entries={speciesDetails.flavor_text_entries}
+            />
             <PokemonSection sectionTitle="Profile" colour={colour}>
               <div className="grid grid-flow-col grid-rows-4 gap-1.5">
                 <div className="grid grid-cols-2">

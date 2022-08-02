@@ -11,3 +11,4 @@ export * from './PokemonProfileHeader/PokemonProfileHeader';
 export * from './PokemonStatbar/PokemonStatbar';
 export * from './PokemonSectionWrapper/PokemonSectionWrapper';
 export * from './PokemonSectionHeader/PokemonSectionHeader';
+export * from './PokemonBiography/PokemonBiography';
