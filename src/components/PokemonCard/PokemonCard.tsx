@@ -31,7 +31,7 @@ export function PokemonCard({pokemon}: IPokemonCardProps): JSX.Element | null {
     <Link to={pokemonDetails?.id.toString() ?? ''}>
       <div className="flex h-min max-w-md flex-col justify-center justify-self-center rounded-lg border border-gray-200 bg-white shadow-md transition duration-500 ease-in-out hover:scale-105 hover:cursor-pointer">
         <img
-          className="h-auto w-full overflow-hidden bg-zinc-100 object-cover object-center"
+          className="h-auto min-h-[383px] w-full overflow-hidden bg-zinc-100 object-cover object-center"
           src={pokemonDetails?.sprites?.other['official-artwork'].front_default}
           alt={pokemonDetails?.name}
         />
