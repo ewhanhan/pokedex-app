@@ -17,7 +17,7 @@ export function PokemonProfile(): JSX.Element | null {
   const [, setIsLoading] = useState(true);
   const [, setError] = useState<unknown>(undefined);
   const [pokemonDetails, setPokemonDetails] = useState<IPokemon>();
-  const [colour, setColour] = useState('test');
+  const [colour, setColour] = useState('');
   const [speciesDetails, setSpeciesDetails] = useState<IPokemonSpecies>();
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export function PokemonProfile(): JSX.Element | null {
                 />
               </div>
               <div>
-                <PokemonType types={pokemonDetails.types} />
+                <PokemonType header types={pokemonDetails.types} />
                 <PokemonStats colour={colour} stats={pokemonDetails.stats} />
                 <PokemonAbilities abilities={pokemonDetails.abilities} />
               </div>
@@ -78,13 +78,13 @@ export function PokemonProfile(): JSX.Element | null {
               <div className="grid grid-flow-col grid-rows-4 gap-1.5">
                 <div className="grid grid-cols-2">
                   <span className="bold font-semibold capitalize">Height:</span>
-                  <span className="capitalize">
+                  <span className="capitalize text-stone-700">
                     {pokemonDetails.height / 10} m
                   </span>
                 </div>
                 <div className="grid grid-cols-2">
                   <span className="bold font-semibold capitalize">Weight:</span>
-                  <span className="capitalize">
+                  <span className="capitalize text-stone-700">
                     {pokemonDetails.weight / 10} kg
                   </span>
                 </div>
@@ -92,7 +92,7 @@ export function PokemonProfile(): JSX.Element | null {
                   <span className="bold font-semibold capitalize">
                     Habitat:
                   </span>
-                  <span className="capitalize">
+                  <span className="capitalize text-stone-700">
                     {speciesDetails.habitat.name}
                   </span>
                 </div>
@@ -100,7 +100,7 @@ export function PokemonProfile(): JSX.Element | null {
                   <span className="bold font-semibold capitalize">
                     Capture Rate:
                   </span>
-                  <span className="capitalize">
+                  <span className="capitalize text-stone-700">
                     {speciesDetails.capture_rate}
                   </span>
                 </div>
@@ -109,10 +109,12 @@ export function PokemonProfile(): JSX.Element | null {
                   <span className="inline-block text-center capitalize">
                     <div className="h-5 w-full rounded-lg bg-pink-500">
                       <div
-                        className="h-5 rounded-l-lg bg-blue-500"
+                        className="h-5 rounded-lg bg-blue-500"
                         style={{
                           width: `${
-                            (1 - speciesDetails.gender_rate / 8) * 100
+                            speciesDetails.gender_rate === -1
+                              ? 100
+                              : (1 - speciesDetails.gender_rate / 8) * 100
                           }%`,
                         }}
                       />
@@ -121,7 +123,7 @@ export function PokemonProfile(): JSX.Element | null {
                 </div>
                 <div className="grid grid-cols-2">
                   <span className="bold font-semibold capitalize">Shape:</span>
-                  <span className="capitalize">
+                  <span className="capitalize text-stone-700">
                     {speciesDetails.shape.name}
                   </span>
                 </div>
@@ -129,7 +131,7 @@ export function PokemonProfile(): JSX.Element | null {
                   <span className="bold font-semibold capitalize">
                     Leveling Rate:
                   </span>
-                  <span className="capitalize">
+                  <span className="capitalize text-stone-700">
                     {speciesDetails.growth_rate.name.replace(/-/g, ' ')}
                   </span>
                 </div>
@@ -137,7 +139,7 @@ export function PokemonProfile(): JSX.Element | null {
                   <span className="bold font-semibold capitalize">
                     Egg Groups:
                   </span>
-                  <span className="capitalize">
+                  <span className="capitalize text-stone-700">
                     {speciesDetails.egg_groups
                       .reduce((prev, curr) => curr.name + ', ' + prev, '')
                       .slice(0, -2)}
