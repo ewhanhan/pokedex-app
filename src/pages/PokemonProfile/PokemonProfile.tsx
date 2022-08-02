@@ -4,7 +4,11 @@ import {motion} from 'framer-motion';
 import axios from 'axios';
 import {useParams} from 'react-router-dom';
 import {IPokemon, IPokemonSpecies} from '../../types/index';
-import {getPokemonByNameOrId, getColourFromType} from '../../util/index';
+import {
+  getPokemonByNameOrId,
+  getColourFromType,
+  cleanedStringNames,
+} from '../../util/index';
 import {
   PokemonType,
   PokemonProfileHeader,
@@ -169,7 +173,7 @@ export function PokemonProfile(): JSX.Element | null {
                     Leveling Rate:
                   </span>
                   <span className="capitalize text-stone-700">
-                    {speciesDetails.growth_rate.name.replace(/-/g, ' ')}
+                    {speciesDetails.growth_rate.name}
                   </span>
                 </div>
                 <div className="grid grid-cols-2">
@@ -177,9 +181,7 @@ export function PokemonProfile(): JSX.Element | null {
                     Egg Groups:
                   </span>
                   <span className="capitalize text-stone-700">
-                    {speciesDetails.egg_groups
-                      .reduce((prev, curr) => curr.name + ', ' + prev, '')
-                      .slice(0, -2)}
+                    {cleanedStringNames(speciesDetails.egg_groups)}
                   </span>
                 </div>
               </div>

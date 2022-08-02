@@ -3,7 +3,7 @@ import {Fragment} from 'react';
 import {motion} from 'framer-motion';
 import {IStats} from '../../types/index';
 import {PokemonStatbar} from '../PokemonStatbar/PokemonStatbar';
-import {useComponentId} from '../../util/index';
+import {useComponentId, cleanedStringName} from '../../util/index';
 import {PokemonHeader} from '../index';
 
 interface IPokemonStatsProps {
@@ -23,7 +23,7 @@ export function PokemonStats({colour, stats}: IPokemonStatsProps): JSX.Element {
           return (
             <Fragment key={componentId + Math.random()}>
               <span className="col-span-3 font-semibold uppercase">
-                {name.replace(/-/g, ' ')}
+                {cleanedStringName(name)}
               </span>
               <motion.div className="col-span-1">
                 <span className="float-right mr-1 text-slate-400">
