@@ -1,4 +1,4 @@
-import {PokemonSectionHeader} from './index';
+import {PokemonSectionHeader} from '../index';
 
 interface IPokemonSectionProps {
   sectionTitle: string;

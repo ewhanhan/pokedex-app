@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useEffect, useState} from 'react';
+import {motion} from 'framer-motion';
 import axios from 'axios';
 import {useParams} from 'react-router-dom';
 import {IPokemon, IPokemonSpecies} from '../../types/index';
@@ -11,6 +12,7 @@ import {
   PokemonSection,
   PokemonAbilities,
 } from '../../components/index';
+import {containerVariant} from '../../style/index';
 
 export function PokemonProfile(): JSX.Element | null {
   const {id} = useParams();
@@ -42,7 +44,12 @@ export function PokemonProfile(): JSX.Element | null {
   console.log(pokemonDetails);
   console.log(speciesDetails);
   return (
-    <div className="fixed inset-0 -z-50 h-screen w-full">
+    <motion.div
+      initial="initial"
+      animate="animate"
+      transition={{duration: 0.5}}
+      variants={containerVariant}
+      className="fixed inset-0 -z-50 h-screen w-full">
       <div className="relative mx-auto h-full max-w-screen-lg rounded-md border drop-shadow">
         <div className="align-center flex h-full w-full flex-col">
           {/* header */}
@@ -55,7 +62,13 @@ export function PokemonProfile(): JSX.Element | null {
             {/* upper section */}
             <div className="grid grid-cols-1 md:grid-cols-2">
               {/* profile image */}
-              <div className="flex justify-center">
+              <motion.div
+                animate={{
+                  scale: [1, 1.1, 1.1, 1.1, 1],
+                  rotate: [0, 45, -45, 45, 0],
+                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+                }}
+                className="flex justify-center">
                 <img
                   className="overflow-hidden object-cover object-center"
                   src={
@@ -64,7 +77,7 @@ export function PokemonProfile(): JSX.Element | null {
                   }
                   alt={pokemonDetails.name}
                 />
-              </div>
+              </motion.div>
               <div>
                 <PokemonType header types={pokemonDetails.types} />
                 <PokemonStats colour={colour} stats={pokemonDetails.stats} />
@@ -93,7 +106,7 @@ export function PokemonProfile(): JSX.Element | null {
                     Habitat:
                   </span>
                   <span className="capitalize text-stone-700">
-                    {speciesDetails.habitat.name}
+                    {speciesDetails.habitat?.name ?? 'unknown'}
                   </span>
                 </div>
                 <div className="grid grid-cols-2">
@@ -150,6 +163,6 @@ export function PokemonProfile(): JSX.Element | null {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

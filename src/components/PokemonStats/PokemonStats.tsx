@@ -1,7 +1,8 @@
 /* eslint-disable camelcase */
 import {Fragment} from 'react';
+import {motion} from 'framer-motion';
 import {IStats} from '../../types/index';
-import {PokemonStatbar} from './PokemonStatbar';
+import {PokemonStatbar} from '../PokemonStatbar/PokemonStatbar';
 import {useComponentId} from '../../util/index';
 import {PokemonHeader} from '../index';
 
@@ -24,7 +25,12 @@ export function PokemonStats({colour, stats}: IPokemonStatsProps): JSX.Element {
               <span className="col-span-3 font-semibold uppercase">
                 {name.replace(/-/g, ' ')}
               </span>
-              <div className="col-span-5">
+              <motion.div className="col-span-1">
+                <span className="float-right mr-1 text-slate-400">
+                  ({stat})
+                </span>
+              </motion.div>
+              <div className="col-span-4">
                 <PokemonStatbar colour={colour} base_stat={stat} />
               </div>
             </Fragment>
