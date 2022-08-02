@@ -121,14 +121,21 @@ export function PokemonProfile(): JSX.Element | null {
                   <span className="bold font-semibold capitalize">Gender:</span>
                   <span className="inline-block text-center capitalize">
                     <div className="h-5 w-full rounded-lg bg-pink-500">
-                      <div
+                      <motion.div
                         className="h-5 rounded-lg bg-blue-500"
-                        style={{
-                          width: `${
-                            speciesDetails.gender_rate === -1
-                              ? 100
-                              : (1 - speciesDetails.gender_rate / 8) * 100
-                          }%`,
+                        animate={{
+                          width: [
+                            '0%',
+                            `${
+                              speciesDetails.gender_rate === -1
+                                ? 100
+                                : (1 - speciesDetails.gender_rate / 8) * 100
+                            }%`,
+                          ],
+                        }}
+                        transition={{
+                          type: 'ease-in-out',
+                          duration: 2,
                         }}
                       />
                     </div>
