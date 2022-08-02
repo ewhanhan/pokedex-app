@@ -130,7 +130,7 @@ export function PokemonProfile(): JSX.Element | null {
                     Capture Rate:
                   </span>
                   <span className="capitalize text-stone-700">
-                    {speciesDetails.capture_rate}
+                    {((speciesDetails.capture_rate / 255) * 100).toFixed(1)}%
                   </span>
                 </div>
                 <div className="grid grid-cols-2">
