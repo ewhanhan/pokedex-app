@@ -4,11 +4,12 @@ import {PokemonHeader} from '../index';
 import {useComponentId} from '../../util/index';
 
 interface IPokemonTypeProps {
+  header?: boolean;
   types: IType[];
 }
 
 // https://www.robinwieruch.de/react-conditional-classname/
-export function PokemonType({types}: IPokemonTypeProps) {
+export function PokemonType({header = false, types}: IPokemonTypeProps) {
   const componentId = useComponentId();
 
   const parentClassNames = cs('grid max-h-8 w-ful gap-2 mb-4', {
@@ -18,7 +19,7 @@ export function PokemonType({types}: IPokemonTypeProps) {
 
   return (
     <>
-      <PokemonHeader title="Type" />
+      {header && <PokemonHeader title="Type" />}
       <div className={parentClassNames}>
         {types.map(({type: {name}}) => {
           const classNames = cs(
