@@ -9,7 +9,10 @@ export function PokemonSectionHeader({
   colour,
   sectionTitle,
 }: IPokemonSectionHeaderProps) {
-  const classNames = cs('mb-2 border border-black py-1 md:my-2.5', colour);
+  const classNames = cs(
+    'w-full mb-2 border border-black py-1 md:my-2.5',
+    colour
+  );
   return (
     <div className={classNames}>
       <h3 className="ml-2.5 text-xl font-semibold capitalize tracking-widest">

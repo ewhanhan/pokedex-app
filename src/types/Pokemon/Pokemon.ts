@@ -1,3 +1,6 @@
+export type URL = {
+  url: string;
+};
 export interface IPokemonNamedAPIResource {
   name: string;
   url: string;
@@ -31,6 +34,8 @@ export interface IPokemonSpecies {
   habitat: IPokemonNamedAPIResource;
   growth_rate: IPokemonNamedAPIResource;
   egg_groups: IPokemonNamedAPIResource[];
+  evolution_chain: URL;
+  evolves_from_species: null;
 }
 
 export interface IFlavorTextEntries {
@@ -62,4 +67,42 @@ export interface IAbility {
 export interface IType {
   slot: number;
   type: IPokemonNamedAPIResource;
+}
+
+export interface IEvolutionChain {
+  chain: IChain;
+  id: number;
+  baby_trigger_item?: any;
+}
+
+interface IChain {
+  evolves_to: IEvolvesTo[];
+  species: IPokemonNamedAPIResource;
+}
+
+export interface IEvolvesTo {
+  evolution_details: IEvolutionDetail[];
+  species: IPokemonNamedAPIResource;
+  evolves_to: IEvolvesTo[];
+}
+
+export interface IEvolutionDetail {
+  gender?: any;
+  held_item?: any;
+  item: IPokemonNamedAPIResource;
+  known_move?: any;
+  known_move_type?: any;
+  location?: any;
+  min_affection?: any;
+  min_beauty?: any;
+  min_happiness?: any;
+  min_level?: number;
+  needs_overworld_rain: boolean;
+  party_species?: any;
+  party_type?: any;
+  relative_physical_stats?: any;
+  time_of_day: string;
+  trade_species?: any;
+  trigger: IPokemonNamedAPIResource;
+  turn_upside_down: boolean;
 }

@@ -1,7 +1,12 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 import axiosInstance from './base.axios';
-import {HTTP_METHODS, IPokemonPage} from '../../types/index';
+import {
+  HTTP_METHODS,
+  IPokemonPage,
+  IPokemon,
+  // IEvolutionChain,
+} from '../../types/index';
 
 export async function apiRequest(
   url: string,
@@ -49,6 +54,14 @@ export async function getPokemonByPage(
   return apiRequest('pokemon', HTTP_METHODS.GET, {limit, offset});
 }
 
-export async function getPokemonByNameOrId(val: number | string) {
+export async function getPokemonByNameOrId(
+  val: number | string
+): Promise<IPokemon> {
   return apiRequest(`pokemon/${val}`, HTTP_METHODS.GET);
 }
+
+// export async function getPokemonEvolutions(
+//   val: number | string
+// ): Promise<IEvolutionChain> {
+//   return apiRequest(`evolution-chain${val}`, HTTP_METHODS.GET);
+// }
