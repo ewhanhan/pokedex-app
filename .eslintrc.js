@@ -67,6 +67,7 @@ module.exports = {
     ],
 
     'prefer-template': 'off',
+    'no-unused-expressions': 'off',
   },
   settings: {
     'import/resolver': {
