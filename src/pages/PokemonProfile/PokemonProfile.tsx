@@ -61,7 +61,7 @@ export function PokemonProfile(): JSX.Element | null {
       transition={{duration: 0.5}}
       variants={containerVariant}
       className="fixed inset-0 -z-50 h-screen w-full">
-      <div className="flex h-full w-full items-center justify-center">
+      <div className="z-100 flex h-full w-full items-center justify-center">
         <div className="relative mx-auto h-fit max-w-screen-lg rounded-md border shadow">
           <div className="align-center flex h-full w-full flex-col pb-4">
             {/* header */}
@@ -72,7 +72,7 @@ export function PokemonProfile(): JSX.Element | null {
             {/* body */}
             <div className="flex flex-col justify-center px-5">
               {/* upper section */}
-              <div className="flex h-fit w-full">
+              <div className="mb-3 flex h-fit w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   {/* profile image */}
                   <motion.div
